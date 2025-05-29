@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Shadcn + Supabase + OpenAI Template
+
+Esta es una plantilla moderna para crear aplicaciones web utilizando Next.js 15, Shadcn UI,  Supabase como backend y OpenAI para integrar la IA. La plantilla incluye una configuración optimizada para desarrollo rápido y una experiencia de usuario moderna.
+
+## Características
+
+- ⚡️ Next.js 15 con App Router
+- 🎨 Shadcn UI para componentes hermosos y accesibles
+- 🔐 Autenticación con Supabase
+- 🎯 TypeScript para un desarrollo más seguro
+- 🎨 Tailwind CSS para estilos
+- 🧠 OpenAI para integrar la IA
+- 🚀 Optimizado para desarrollo con Turbopack
+
+## Requisitos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+- [Docker](https://docs.docker.com/get-docker/) - Para ejecutar Supabase localmente
+- [Supabase CLI](https://supabase.com/docs/guides/cli) - Para gestionar tu proyecto Supabase
 
 ## Getting Started
 
-First, run the development server:
+1. **Configuración del Proyecto Supabase (Opcional pero recomendado)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   Edita el archivo `supabase/config.toml` para cambiar el nombre del proyecto según tus necesidades.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Inicializar Supabase**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   supabase init
+   supabase start
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   > ⚠️ **Nota importante**: Si tienes un contenedor de Docker con otro proyecto de Supabase corriendo, recibirás un error. En ese caso, ejecuta:
+   > ```bash
+   > supabase stop --project-id <nombre-contenedor>
+   > ```
+   > Y luego vuelve a ejecutar `supabase start`
 
-## Learn More
+3. **Configurar Variables de Entorno**
 
-To learn more about Next.js, take a look at the following resources:
+   Renombra el archivo `.env.example` a `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   mv .env.example .env.local
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Después de iniciar Supabase, actualiza los siguientes valores en tu archivo `.env.local`:
 
-## Deploy on Vercel
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=<API URL de Supabase>
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=<Anon Key de Supabase>
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Puedes encontrar estos valores en la salida del comando `supabase start`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Instalar Dependencias**
+
+   ```bash
+   npm install
+   # o
+   pnpm install
+   # o
+   yarn install
+   ```
+
+5. **Iniciar el Servidor de Desarrollo**
+
+   ```bash
+   npm run dev
+   # o
+   pnpm dev
+   # o
+   yarn dev
+   ```
+
+   La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+## Tecnologías Principales
+
+- [Next.js](https://nextjs.org/) - Framework de React
+- [Shadcn UI](https://ui.shadcn.com/) - Componentes de UI
+- [Supabase](https://supabase.com/) - Backend as a Service
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS
+- [OpenAI](https://platform.openai.com/docs/overview) - API de Inteligencia Artificial
+- [TypeScript](https://www.typescriptlang.org/) - Superset de JavaScript
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta el linter
+
+## Licencia
+
+MIT
